@@ -9,5 +9,9 @@ module.exports = {
     userperms: [],
     botperms: ['SEND_MESSAGES'],
     run: async (client, message, args) => {
+        const embed = new MessageEmbed()
+            .setColor('BLUE')
+            .setDescription('[Invite Link](https://discord.com/api/oauth2/authorize?client_id=843428824385716244&permissions=8&scope=bot)\n[Support Server](https://discord.gg/xyqpAvyPgZ)')
+        message.lineReplyNoMention(embed)
     }
 }
