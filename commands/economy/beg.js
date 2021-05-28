@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-
+const ms = require('ms')
 const db = require('quick.db')
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
 
             let timeEmbed = new MessageEmbed()
                 .setColor('RED')
-                .setDescription(`:x: You've already begged recently\n\nBeg again in ${time.minutes}m ${time.seconds}s `);
+                .setDescription(`:x: You've already begged recently\n\nTry again later.`);
             message.lineReplyNoMention(timeEmbed)
 
         } else {
