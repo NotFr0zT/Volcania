@@ -14,7 +14,7 @@ module.exports = {
         if (!channel) return message.channel.send('Mention a channel')
    
         let mm;
-   
+
        if (channel === args[0]) mm = await message.guild.channels.cache.get(args[0]); else mm = await message.mentions.channels.first();
    
        mm.updateOverwrite(message.guild.roles.everyone.id, {
