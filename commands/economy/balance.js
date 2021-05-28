@@ -3,11 +3,11 @@ const { MessageEmbed } = require('discord.js')
 const db = require('quick.db')
 
 module.exports = {
-    name: 'balance',
+    name: 'bal',
     category: 'Economy',
     description: 'Shows your balance!',
-    aliases: ['bal', 'money'],
-    usage: 'balance',
+    aliases: ['balance'],
+    usage: 'bal',
     userperms: [],
     botperms: [],
     run: async (client, message, args) => {
