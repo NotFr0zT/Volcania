@@ -34,7 +34,7 @@ module.exports = {
 				.setFooter(`${client.user.username}'s Help`, `${client.user.avatarURL()}`)
 				.setTimestamp()
 				.setColor('BLUE')
-				.setDescription([`This server's prefix is \`${prefix}\`.\nFor more info on a specific command, type \`${prefix}help <command>\`.`]);
+				.setDescription([`This server's prefix is \`${prefix}\`.\nFor more info on a specific command, type \`${prefix}help <command>\`.\nImportant Links:\n[Invite Link](https://discord.com/api/oauth2/authorize?client_id=843428824385716244&permissions=8&scope=bot)\n[Support Server](https://discord.gg/xyqpAvyPgZ)`]);
 
 			let categories;
 			if(message.author.id !== OWNER) {
