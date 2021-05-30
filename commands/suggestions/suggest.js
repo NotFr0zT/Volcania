@@ -24,7 +24,7 @@ module.exports = {
             .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
             .setDescription(`${suggestionQuery}`)
             .setColor("00FFFF")
-            .setFooter("Status: Pending")
+            .setFooter(`Status: pending | ID ${message.id}`)
             .setTimestamp();
 
         const done = new MessageEmbed()
