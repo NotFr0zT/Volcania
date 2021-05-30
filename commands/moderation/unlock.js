@@ -6,7 +6,7 @@ module.exports = {
     category: 'Moderation',
     description: 'Unlock\'s the mentioned channel',
     usage: 'unlock <#channel>',
-    userperms: [],
+    userperms: ['MANAGE_CHANNELS'],
     botperms: [],
     run: async (client, message, args, prefix) => {
         const channel = message.mentions.channels.first() ? message.mentions.channels.first() : args[0];

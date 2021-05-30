@@ -4,7 +4,7 @@ module.exports = {
     name: 'invite',
     category: 'Info',
     description: 'Sends the invite for the bot!',
-    aliases: ['i'],
+    aliases: ['info', 'server', 'support'],
     usage: 'invite',
     userperms: [],
     botperms: ['SEND_MESSAGES'],
