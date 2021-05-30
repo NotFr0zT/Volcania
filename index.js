@@ -40,6 +40,10 @@ client.on('guildCreate', async (guild) => {
     // setTimeout(() => {
     //     msg.delete()
     // }, 20000)
+
+    client.on('ready', async () => {
+        client.user.setActivity('Updating status as well as commands...')
+    })
 })
 
 
