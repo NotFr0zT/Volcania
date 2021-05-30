@@ -9,7 +9,7 @@ module.exports = async (client) => {
 
 	setInterval(function() {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setActivity(`${BOT_PREFIX}help | ${status}`, { type: 'WATCHING' });
+		client.user.setActivity(`${PREFIX}help | ${status}`, { type: 'WATCHING' });
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);
