@@ -56,9 +56,7 @@ client.on('clickButton', async (button) => {
 //             .setColor('BLUE')
 //             .setTimestamp()
 //         ).then(button.defer())
-    }
-
-// })
+    })
 
 client.login(process.env.TOKEN);
 
