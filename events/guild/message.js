@@ -7,6 +7,10 @@ module.exports = async (client, message) => {
 
 	const prefix = PREFIX;
 
+	if (message.content === 'v!users') return message.channel.send(client.users.cache.size)
+	if (message.content === 'v!servers') return message.channel.send(client.guilds.cache.size)
+	if (message.content === 'v!commands') return message.channel.send(client.commands.size)
+
 	if (message.content.match(`^<@!?${client.user.id}>( |)$`)) {
 		message.channel.send(`${message.guild.name}'s prefix is \`${prefix}\``);
 	}
