@@ -2,12 +2,14 @@ const { PREFIX } = process.env;
 
 module.exports = async (client) => {
 	const botStatus = [
-		`${client.guilds.cache.size} servers and helping ${client.users.cache.size} users!`,
+		`${client.guilds.cache.size} Servers!`,
+		`${client.users.cache.size} Users!`,
+		`${client.commands.size} Commands!`
 	];
 
 	setInterval(function() {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setActivity(`${status}`, {type: 'WATCHING'}, { status: 'idle' });
+		client.user.setActivity(`${BOT_PREFIX}help | ${status}`, { type: 'WATCHING' });
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);
