@@ -10,12 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cow": "^0.2.3",
     "discord-buttons": "^2.4.1",
     "discord-reply": "^0.1.2",
     "discord.js": "^12.5.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "give-me-a-joke": "^0.4.0",
     "ms": "^2.1.3",
-    "quick.db": "^7.1.3"
+    "quick.db": "^7.1.3",
+    "random-number": "0.0.9"
   }
 }
