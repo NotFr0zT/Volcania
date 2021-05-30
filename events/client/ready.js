@@ -7,7 +7,10 @@ module.exports = async (client) => {
 
 	setInterval(function() {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setActivity(`${status}`, { type: 'WATCHING', status: 'dnd' });
+		client.user.setActivity(`${status}`, {
+			 type: 'WATCHING', 
+			 status: 'idle'
+			});
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);
