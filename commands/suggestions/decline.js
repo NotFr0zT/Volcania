@@ -21,27 +21,27 @@ module.exports = {
 
         const number = new MessageEmbed()
             .setDescription(`Please use a valid message ID.`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const id = new MessageEmbed()
             .setDescription(`You forgot to specify a message ID.`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const query = new MessageEmbed()
             .setDescription(`<You forgot to specify the reason to decline this suggestion.`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const reply = new MessageEmbed()
             .setDescription(`Successfully declined the suggestion.`)
-            .setColor("00FFFF")
+            .setColor('00FFFF')
 
         const noChannel = new MessageEmbed()
             .setDescription('No suggestion channel found.')
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const noMessage = new MessageEmbed()
             .setDescription(`I cannot find any message with that id, please use a valid message ID.`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         if (!messageID) return message.lineReplyNoMention(id);
         if (!rgx.test(messageID)) return message.lineReplyNoMention(number);
@@ -54,7 +54,7 @@ module.exports = {
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID).catch(error => {
                 const noMessage = new MessageEmbed()
                     .setDescription(`I cannot find any message with that ID, please use a valid message ID.`)
-                    .setColor("FF2052")
+                    .setColor('FF2052')
                 return message.lineReplyNoMention(noMessage);
             })
 
@@ -62,10 +62,11 @@ module.exports = {
 
             const replyEmbed = new MessageEmbed()
                 .setAuthor(`${data.author.name}`, `${data.author.iconURL}`)
-                .setDescription(`**Suggestion:**\n${data.description}`)
-                .setColor("RED")
+                .setTitle('Suggestion')
+                .setDescription(`${data.description}`)
+                .setColor('RED')
                 .addField(`Declined by ${message.author.tag}`, replyQuery)
-                .setFooter("Status: declined")
+                .setFooter(`Status: declined | ID: ${suggestedEmbed.id}`)
                 .setTimestamp();
 
             suggestedEmbed.edit(replyEmbed)
@@ -76,7 +77,7 @@ module.exports = {
 
             const embed = new MessageEmbed()
                 .setDescription(`Your [suggestion](https://discord.com/channels/${message.guild.id}/${channel}/${messageID}) has been declined.`)
-                .setColor("RED")
+                .setColor('RED')
             user.send(embed)
 
         } catch (err) {

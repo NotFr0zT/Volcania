@@ -21,27 +21,27 @@ module.exports = {
 
         const number = new MessageEmbed()
             .setDescription(`I don't think that was a Message ID!`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const id = new MessageEmbed()
             .setDescription(`You forgot to specify Message ID!`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const query = new MessageEmbed()
             .setDescription(`You forgot to specify the Reply!`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const reply = new MessageEmbed()
             .setDescription(` Successfully Replied the Suggestion.`)
-            .setColor("00FFFF")
+            .setColor('00FFFF')
 
         const noChannel = new MessageEmbed()
             .setDescription(`No Suggestion Channel found!`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         const noMessage = new MessageEmbed()
             .setDescription(` Didn't find any Message with that ID!`)
-            .setColor("FF2052")
+            .setColor('FF2052')
 
         if (!messageID) return message.lineReplyNoMention(id);
         if (!rgx.test(messageID)) return message.lineReplyNoMention(number);
@@ -53,7 +53,7 @@ module.exports = {
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID).catch(error => {
                 const noMessage = new MessageEmbed()
                     .setDescription(`Didn't find any Message with that ID!`)
-                    .setColor("FF2052")
+                    .setColor('FF2052')
                 return message.lineReplyNoMention(noMessage);
             })
 
@@ -61,10 +61,11 @@ module.exports = {
 
             const replyEmbed = new MessageEmbed()
                 .setAuthor(`${data.author.name}`, data.author.iconURL)
-                .setDescription(`**Suggestion:**\n${data.description}`)
-                .setColor("BLUE")
+                .setTitle('Suggestion')
+                .setDescription(`${data.description}`)
+                .setColor('BLUE')
                 .addField(`Reply from ${message.author.tag}`, replyQuery)
-                .setFooter("Status: Replied")
+                .setFooter(`Status: replied | ID: ${suggestedEmbed.id}`)
                 .setTimestamp();
 
             suggestedEmbed.edit(replyEmbed)
@@ -75,7 +76,7 @@ module.exports = {
 
             const embed = new MessageEmbed()
                 .setDescription(`You have got a Reply over your [suggestion](https://discord.com/channels/${message.guild.id}/${channel}/${messageID})`)
-                .setColor("BLUE")
+                .setColor('BLUE')
             user.send(embed)
 
         } catch (err) {
