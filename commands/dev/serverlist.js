@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
-const ownerid = ["765767707621589032"]; //fr0zt
-const ownerid2 = ["other owner.."];
+const ownerid = "765767707621589032"; //fr0zt
 
 module.exports = {
     name: 'serverlist',
@@ -12,8 +11,7 @@ module.exports = {
     botperms: [],
     run: async (client, message, args, prefix) => {
 
-
-        if (message.author.id == ownerid || ownerid2) {
+        if (message.author.id === '765767707621589032') {
             if (!message.guild.me.hasPermission("ADMINISTRATOR"))
                 return message.channel
                     .send("I Dont Have Permissions")
@@ -134,7 +132,7 @@ module.exports = {
                 await reaction.users.remove(message.author.id);
             });
         } else {
-            return;
+            message.channel.send('nono, you have to be owner to do that smh')
         }
     }
 }
