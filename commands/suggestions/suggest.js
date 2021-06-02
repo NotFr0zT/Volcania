@@ -9,6 +9,7 @@ module.exports = {
     description: 'Suggests something!',
     aliases: [],
     usage: 'suggest <string>',
+    example: 'suggest Add Volcania to the server',
     userperms: [],
     botperms: ['MANAGE_CHANNELS'],
     run: async (client, message, args) => {

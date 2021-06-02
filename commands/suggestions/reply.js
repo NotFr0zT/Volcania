@@ -8,6 +8,7 @@ module.exports = {
     description: 'Replies to a suggestion!',
     aliases: [],
     usage: 'reply <suggestion id>',
+    example: 'reply 849698926752910586',
     userperms: ['MANAGE_GUILD'],
     botperms: ['MANAGE_CHANNELS'],
     run: async (client, message, args) => {
@@ -17,7 +18,7 @@ module.exports = {
 
         const rgx = /^(?:<@!?)?(\d+)>?$/;
         const messageID = args[0];
-        const replyQuery = args.slice(1).join(' ');
+        const replyQuery = args.slice(1).join(' ') || 'No reason';
 
         const number = new MessageEmbed()
             .setDescription(`I don't think that was a Message ID!`)

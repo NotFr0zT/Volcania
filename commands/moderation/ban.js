@@ -8,6 +8,7 @@ module.exports = {
     description: 'Bans a user',
     aliases: [],
     usage: 'ban <user> [reason]',
+    example: 'ban @Fr0zT For being cool',
     userperms: ['BAN_MEMBERS'],
     botperms: [],
     run: async (client, message, args) => {

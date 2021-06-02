@@ -6,6 +6,7 @@ module.exports = {
     description: 'Sends the invite for the bot!',
     aliases: ['info', 'server', 'support'],
     usage: 'invite',
+    example: 'invite',
     userperms: [],
     botperms: ['SEND_MESSAGES'],
     run: async (client, message, args) => {

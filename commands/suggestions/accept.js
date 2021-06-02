@@ -8,6 +8,7 @@ module.exports = {
     description: 'Accepts a suggestion!',
     aliases: [],
     usage: 'accept <suggestion id>',
+    example: 'accept 849698926752910586',
     userperms: ['MANAGE_GUILD'],
     botperms: ['MANAGE_CHANNELS'],
     run: async (client, message, args) => {
@@ -19,7 +20,7 @@ module.exports = {
 
         const rgx = /^(?:<@!?)?(\d+)>?$/;
         const messageID = args[0];
-        const replyQuery = args.slice(1).join(' ');
+        const replyQuery = args.slice(1).join(' ') || 'No reason';
 
 
 

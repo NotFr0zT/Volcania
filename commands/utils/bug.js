@@ -8,6 +8,7 @@ module.exports = {
 	description: 'Report a bug to the developers',
 	aliases: ['bugreport'],
 	usage: 'bug <bug>',
+    example: 'bug The v!help command doesnt work',
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args) => {

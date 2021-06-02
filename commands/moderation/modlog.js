@@ -8,6 +8,7 @@ module.exports = {
     description: 'Sets a channel to send moderation logs in',
     aliases: ['setm', 'sm', 'smc', 'setmodlog'],
     usage: 'modlogchannel <channel mention | channel ID | channel name>',
+    example: 'modlog #moderation-logs',
     userperms: ['MANAGE_GUILD'],
     botperms: [],
     run: async (client, message, args) => {

@@ -6,6 +6,7 @@ module.exports = {
     category: 'Moderation',
     description: 'Lock\'s the mentioned channel',
     usage: 'lock <#channel>',
+    example: 'lock #general',
     userperms: ['MANAGE_CHANNELS'],
     botperms: [],
     run: async (client, message, args, prefix) => {

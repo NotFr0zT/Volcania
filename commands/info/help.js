@@ -8,6 +8,7 @@ module.exports = {
 	category: 'Info',
 	description: 'Returns the help page, or one specific command info.',
 	usage: 'help [command/category]',
+	example: 'help [clap]',
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args, prefix) => {
@@ -25,6 +26,7 @@ module.exports = {
 					`> **Description: \`${capitalizeFirstLetter(cmd.description)}\`**`,
 					`> **Usage: \`${prefix}${cmd.usage}\`**`,
 					`> **Aliases: \`${cmd.aliases.length ? cmd.aliases.map((a) => `${a}`).join('`, `') : 'None'}\`**`,
+					`> **Example: \`${prefix}${cmd.example}\`**`
 				]);
 			return message.channel.send(hembed);
 		}
@@ -47,7 +49,7 @@ module.exports = {
 			for (const id of categories) {
 				const category = client.commands.filter(cmd => cmd.category === id);
 
-				embed.addField(`${id} (${category.size})`, category.map(cmd => `\`${cmd.name}\`,`).join(' '));
+				embed.addField(`${id} (${category.size})`, category.map(cmd => `\`${cmd.name}\`,`).join('`, `'));
 			}
 			return message.channel.send(embed);
 		}

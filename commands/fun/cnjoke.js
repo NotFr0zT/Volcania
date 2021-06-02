@@ -6,9 +6,10 @@ let giveMeAJoke = require('give-me-a-joke');;
 module.exports = {
 	name: 'cnjoke',
 	category: 'Fun',
-	description: 'Gives you a joke',
+	description: 'Gives you a chuck norris joke',
 	aliases: ['chuck', 'chucknorris', 'chucknorrisjoke'],
-	usage: 'joke',
+	usage: 'cnjoke',
+	example: 'cnjoke',
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args) => {

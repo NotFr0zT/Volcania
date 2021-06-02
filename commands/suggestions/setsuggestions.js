@@ -8,6 +8,7 @@ module.exports = {
 	description: 'Sets the suggestion channel for your server!',
 	aliases: ['setchannel', 'setsuggestionchannel', 'setsuggestionschannel'],
 	usage: 'setsuggestion <#channel>',
+    example: 'setsuggestion #suggestions',
 	userperms: ['MANAGE_GUILD'],
 	botperms: ['MANAGE_CHANNELS'],
 	run: async (client, message, args) => {

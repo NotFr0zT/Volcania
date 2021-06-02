@@ -6,6 +6,7 @@ module.exports = {
 	description: 'Returns the bot\'s latency and API ping.',
 	aliases: ['latency'],
 	usage: 'ping',
+	example: 'ping',
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args) => {

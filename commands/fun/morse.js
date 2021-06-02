@@ -8,6 +8,7 @@ module.exports = {
     description: 'Sends some morse code back',
     aliases: [],
     usage: 'morse',
+    example: 'morse Hello there!',
     userperms: [],
     botperms: [],
     run: async (client, message, args) => {

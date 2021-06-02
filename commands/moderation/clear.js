@@ -6,6 +6,7 @@ module.exports = {
     category: 'Moderation',
     description: 'Clear\'s a specified amount of messages',
     usage: 'clear <integer>',
+    example: 'clear 69',
     userperms: ['MANAGE_CHANNELS'],
     botperms: [],
     run: async (client, message, args, prefix) => {

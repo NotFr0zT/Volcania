@@ -24,6 +24,7 @@ module.exports = {
 	description: '',
 	aliases: [],
 	usage: '',
+	example: '',
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args) => {

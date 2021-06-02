@@ -8,6 +8,7 @@ module.exports = {
     description: 'Starts a poll',
     aliases: ['poll'],
     usage: 'vote <channel to send vote in> <seconds for vote to last> <vote message>',
+    example: 'vote #announcements 21600 Should I make an awesome bot named Volcania?',
     userperms: [],
     botperms: [],
     run: async (client, message, args) => {
