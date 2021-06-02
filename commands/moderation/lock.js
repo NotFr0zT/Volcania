@@ -25,6 +25,27 @@ module.exports = {
                 .setDescription(`**${mm.name}** has been locked`)
 
             message.channel.send(done)
+
+            let modchannel = db.fetch(`modlog_${message.guild.id}`)
+            if (modchannel == null) return;
+
+            if (!modchannel) return;
+
+            const embed = new MessageEmbed()
+                .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL())
+                .setColor("#ff0000")
+                .setThumbnail(banMember.user.displayAvatarURL({ dynamic: true }))
+                .setFooter(message.guild.name, message.guild.iconURL())
+                .addField("**Moderation**", "Lock")
+                .addField("**Channel**", channel)
+                .addField("**ID**", channel.id)
+                .addField("**Locked By**", message.author.username)
+                .addField("**Date**", message.createdAt.toLocaleString())
+                .setTimestamp();
+
+            var sChannel = message.guild.channels.cache.get(modchannel)
+            if (!sChannel) return;
+            sChannel.send(embed)
         }).catch(() => {
             const failed = new MessageEmbed()
                 .setColor('RED')

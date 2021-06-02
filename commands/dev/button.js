@@ -1,5 +1,5 @@
 const { MessageButton } = require('discord-buttons');
-const ownerid = ["765767707621589032"]; //fr0zt
+const ownerid = "765767707621589032"; //fr0zt
 const ownerid2 = ["other owner.."];
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     userperms: ['ADMINISTRATOR'],
     botperms: [],
     run: async (client, message, args, prefix) => {
-        if (message.author.id == ownerid || ownerid2) {
+        if (message.author.id === ownerid) {
 
             const button1 = new MessageButton()
                 .setStyle('green')

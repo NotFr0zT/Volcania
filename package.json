@@ -17,6 +17,7 @@
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "give-me-a-joke": "^0.4.0",
+    "moment": "^2.29.1",
     "ms": "^2.1.3",
     "quick.db": "^7.1.3",
     "random-number": "0.0.9"

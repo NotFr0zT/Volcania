@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const db = require('quick.db')
 
 module.exports = {
     name: 'unlock',
@@ -25,6 +26,27 @@ module.exports = {
            .setDescription(`**${mm.name}** has been unlocked`)
    
            message.channel.send(done)
+
+           let modchannel = db.fetch(`modlog_${message.guild.id}`)
+            if (modchannel === null || undefined) return;
+
+            if (!modchannel) return;
+
+            const embed = new MessageEmbed()
+                .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL())
+                .setColor("#ff0000")
+                .setThumbnail(banMember.user.displayAvatarURL({ dynamic: true }))
+                .setFooter(message.guild.name, message.guild.iconURL())
+                .addField("**Moderation**", "Unlock")
+                .addField("**Channel**", channel)
+                .addField("**ID**", channel.id)
+                .addField("*Unlocked By**", message.author.username)
+                .addField("**Date**", message.createdAt.toLocaleString())
+                .setTimestamp();
+
+            var sChannel = message.guild.channels.cache.find(modchannel)
+            if (!sChannel) return;
+            sChannel.send(embed)
        }).catch(() => {
            const failed = new MessageEmbed()
            .setColor('RED')
