@@ -49,7 +49,7 @@ module.exports = {
 			for (const id of categories) {
 				const category = client.commands.filter(cmd => cmd.category === id);
 
-				embed.addField(`${id} (${category.size})`, category.map(cmd => `\`${cmd.name}\`,`).join('`, `'));
+				embed.addField(`${id} (${category.size})`, category.map(cmd => `\`${cmd.name}\``).join(', '));
 			}
 			return message.channel.send(embed);
 		}
