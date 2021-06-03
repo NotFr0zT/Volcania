@@ -12,6 +12,7 @@ module.exports = {
     userperms: ['MANAGE_GUILD'],
     botperms: [],
     run: async (client, message, args) => {
+        if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
         if (!args[0]) {
             let b = await db.fetch(`modlog_${message.guild.id}`);
             let channelName = message.guild.channels.cache.get(b);

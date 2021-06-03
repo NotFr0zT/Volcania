@@ -15,6 +15,8 @@ module.exports = {
         try {
             if (!args[0]) return message.channel.send("**Please Provide A User To Ban!**")
 
+            if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
+
             let banMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase() === args[0].toLocaleLowerCase()) || message.guild.members.cache.find(ro => ro.displayName.toLowerCase() === args[0].toLocaleLowerCase());
             if (!banMember) return message.channel.send("**User Is Not In The Guild**");
             if (banMember === message.member) return message.channel.send("**You Cannot Ban Yourself**")

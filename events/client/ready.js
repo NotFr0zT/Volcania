@@ -1,15 +1,22 @@
 const { PREFIX } = process.env;
 
 module.exports = async (client) => {
+
+	let totalMembers = 0;
+
+	for (const guild of client.guilds.cache) {
+		totalMembers += (await guild[1].members.fetch()).size;
+	}
+
 	const botStatus = [
 		`${client.guilds.cache.size} Servers!`,
-		`${client.users.cache.size} Users!`,
+		`${totalMembers} Users!`,
 		`${client.commands.size} Commands!`
 	];
 
-	setInterval(function() {
+	setInterval(function () {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setActivity(`${PREFIX}help | ${status}`, { type: 'WATCHING' });
+		client.user.setPresence({activity: {type: 'WATCHING', url: "https://www.twitch.tv/", name: status}, status:  'idle'});
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);

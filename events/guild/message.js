@@ -26,8 +26,13 @@ module.exports = async (client, message) => {
 	if (!message.guild) return;
 
 	const prefix = PREFIX;
+	let totalMembers = 0;
 
-	if (message.content === 'v!users') return message.channel.send(client.users.cache.size)
+	for (const guild of client.guilds.cache) {
+		totalMembers += (await guild[1].members.fetch()).size;
+	}
+
+	if (message.content === 'v!users') return message.channel.send(totalMembers)
 	if (message.content === 'v!servers') return message.channel.send(client.guilds.cache.size)
 	if (message.content === 'v!commands') return message.channel.send(client.commands.size)
 
@@ -52,23 +57,23 @@ module.exports = async (client, message) => {
 				validatePermissions(command.userperms);
 			}
 
-			for(const permission of command.userperms) {
-				if(permission === 'OWNER' && message.member.id !== OWNER) {
+			for (const permission of command.userperms) {
+				if (permission === 'OWNER' && message.member.id !== OWNER) {
 					return;
 				}
-				else if(!message.member.hasPermission(permission)) {
+				else if (!message.member.hasPermission(permission)) {
 					return message.channel.send(
 						`🛑 Insufficient Permission! \`${permission}\` required.`,
 					);
 				}
 			}
 
-			if(typeof command.botperms === 'string') {
+			if (typeof command.botperms === 'string') {
 				command.botperms = command.botperms.split();
 				validatePermissions(command.botperms);
 			}
 
-			for(const permission of command.botperms) {
+			for (const permission of command.botperms) {
 				if (!message.guild.me.hasPermission(permission)) {
 					return message.channel.send(
 						`🛑 Insufficient Permission! I require \`${permission}\`.`,

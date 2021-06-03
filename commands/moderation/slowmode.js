@@ -13,6 +13,7 @@ module.exports = {
     userperms: [],
     botperms: [],
     run: async (client, message, args) => {
+        if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send('You do not have **MANAGE_CHANNELS** permission!').then(m => m.delete({ timeout: 5000 }));
 
         if (!args[0]) return message.channel.send('You did not specify a time!').then(m => m.delete({ timeout: 5000 }));

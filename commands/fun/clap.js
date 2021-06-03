@@ -9,7 +9,7 @@ module.exports = {
     description: 'C👏l👏a👏p',
     aliases: [],
     usage: 'clap <string>',
-    example: 'clap <string>',
+    example: 'clap Super awesome sentence!',
     userperms: [],
     botperms: [],
     run: async (client, message, args) => {

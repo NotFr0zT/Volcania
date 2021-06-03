@@ -1,59 +1,38 @@
-const { MessageEmbed } = require("discord.js");
-const db = require('quick.db')
+const { MessageEmbed } = require('discord.js');
+const { MessageButton } = require('discord-buttons');
+const db = require('quick.db');
 
 module.exports = {
     name: 'unlock',
-    aliases: ['unlockchannel'],
     category: 'Moderation',
-    description: 'Unlock\'s the mentioned channel',
-    usage: 'unlock <#channel>',
+    description: 'Unlocks a channel',
+    aliases: ['ul'],
+    usage: 'unlock [channel]',
     example: 'unlock #general',
-    userperms: ['MANAGE_CHANNELS'],
+    userperms: [],
     botperms: [],
-    run: async (client, message, args, prefix) => {
-        const channel = message.mentions.channels.first() ? message.mentions.channels.first() : args[0];
+    run: async (client, message, args) => {
+        if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
+        let lockPermErr = new MessageEmbed()
+            .setTitle("Permission Error")
+            .setDescription("Sorry, you don't have permissions to use this! ❌")
 
-        if (!channel) return message.channel.send('Mention a channel')
-   
-        let mm;
+        if (!message.channel.permissionsFor(message.member).has("MANAGE_CHANNELS")) return message.channel.send(lockPermErr);
 
-       if (channel === args[0]) mm = await message.guild.channels.cache.get(args[0]); else mm = await message.mentions.channels.first();
-   
-       mm.updateOverwrite(message.guild.roles.everyone.id, {
-           SEND_MESSAGES: null
-       }).then(() => {
-           const done = new MessageEmbed()
-           .setColor('GREEN')
-           .setDescription(`**${mm.name}** has been unlocked`)
-   
-           message.channel.send(done)
+        let channel = message.channel || message.mentions.channels.first() || message.guild.channels.cache.find(args[0]);
 
-           let modchannel = db.fetch(`modlog_${message.guild.id}`)
-            if (modchannel === null || undefined) return;
+        try {
+            message.guild.roles.cache.forEach(role => {
+                channel.createOverwrite(role, {
+                    SEND_MESSAGES: true,
+                    ADD_REACTIONS: true
+                });
+            });
+        } catch (e) {
+            console.log(e);
+            message.channel.send('Something failed! Please contact the developers in the [Support Server](https://discord.gg/xyqpAvyPgZ)')
+        }
 
-            if (!modchannel) return;
-
-            const embed = new MessageEmbed()
-                .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL())
-                .setColor("#ff0000")
-                .setThumbnail(banMember.user.displayAvatarURL({ dynamic: true }))
-                .setFooter(message.guild.name, message.guild.iconURL())
-                .addField("**Moderation**", "Unlock")
-                .addField("**Channel**", channel)
-                .addField("**ID**", channel.id)
-                .addField("*Unlocked By**", message.author.username)
-                .addField("**Date**", message.createdAt.toLocaleString())
-                .setTimestamp();
-
-            var sChannel = message.guild.channels.cache.find(modchannel)
-            if (!sChannel) return;
-            sChannel.send(embed)
-       }).catch(() => {
-           const failed = new MessageEmbed()
-           .setColor('RED')
-           .setDescription(`Failed to unlock **${mm.name}**`)
-   
-           message.channel.send(failed)
-       })
+        message.channel.send(`Done | Channel Unlocked!`);
     }
 }
