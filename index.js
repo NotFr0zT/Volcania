@@ -3,7 +3,7 @@ const keepAlive = require('./server');
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 require('discord-reply');
 const db = require('quick.db');
-const client = new Client({ disableMentions: 'everyone', partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER'], ws: { intents: Intents.ALL } });
+const client = new Client({ disableMentions: 'everyone', partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER'], ws: { intents: Intents.ALL, properties: { $browser: "Discord iOS" } } });
 require('discord-buttons')(client);
 
 client.commands = new Collection();

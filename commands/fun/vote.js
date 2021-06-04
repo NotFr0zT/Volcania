@@ -9,15 +9,13 @@ module.exports = {
     aliases: ['poll'],
     usage: 'vote <channel to send vote in> <seconds for vote to last> <vote message>',
     example: 'vote #announcements 21600 Should I make an awesome bot named Volcania?',
-    userperms: [],
+    userperms: ['KICK_MEMBERS'],
     botperms: [],
     run: async (client, message, args) => {
         const agree = "✅";
         const disagree = "❎";
 
         try {
-            if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You can't use this command. Ask a moderator to lead the voting.");
-
             let channel;
             let timeS;
             let votingthing;

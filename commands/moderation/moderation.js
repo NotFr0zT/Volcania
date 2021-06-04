@@ -9,14 +9,9 @@ module.exports = {
     aliases: ['enablemod', 'enablemoderation', 'mod'],
     usage: 'moderation [on | off]',
     example: 'moderation on',
-    userperms: [],
+    userperms: ['MANAGE_GUILD'],
     botperms: [],
     run: async (client, message, args) => {
-        let lockPermErr = new MessageEmbed()
-            .setTitle("Permission Error")
-            .setDescription("Sorry, you don't have permissions to use this! ❌")
-
-        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(lockPermErr)
 
         if (args[0]) {
             if (args[0] === 'on') {

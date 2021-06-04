@@ -8,7 +8,7 @@ module.exports = {
     category: 'Dev',
     description: 'Sends a button',
     usage: 'button',
-    userperms: ['ADMINISTRATOR'],
+    userperms: ['OWNER'],
     botperms: [],
     run: async (client, message, args, prefix) => {
         if (message.author.id === ownerid) {

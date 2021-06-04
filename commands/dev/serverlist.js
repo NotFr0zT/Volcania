@@ -7,7 +7,7 @@ module.exports = {
     category: 'Dev',
     description: 'Get\'s a list of servers',
     usage: 'serverlist',
-    userperms: [],
+    userperms: ['OWNER'],
     botperms: [],
     run: async (client, message, args, prefix) => {
 

@@ -9,10 +9,9 @@ module.exports = {
     aliases: ['ub'],
     usage: 'unban <user> [reason]',
     example: 'unban 765767707621589032 Reeee',
-    userperms: [],
+    userperms: ['BAN_MEMBERS'],
     botperms: ['BAN_MEMBERS'],
     run: async (client, message, args) => {
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don\'t have the permissions to do that")
 
         if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
 

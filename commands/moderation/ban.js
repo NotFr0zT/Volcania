@@ -9,7 +9,7 @@ module.exports = {
     aliases: [],
     usage: 'ban <user> [reason]',
     example: 'ban @Fr0zT For being cool',
-    userperms: ['BAN_MEMBERS'],
+    userperms: ['BAN_MEMBERS', 'SEND_MESSAGES'],
     botperms: [],
     run: async (client, message, args) => {
         try {
@@ -26,7 +26,7 @@ module.exports = {
             if (!banMember.bannable) return message.channel.send("**Cant Ban That User**")
             try {
                 message.guild.members.ban(banMember)
-                banMember.send(`**Hello, You Have Been Banned From ${message.guild.name} for - ${reason}**`).catch(() => null)
+                banMember.send(`Hello, You Have Been Banned From ${message.guild.name} for - **${reason}**`).catch(() => null)
             } catch {
                 message.guild.members.ban(banMember)
             }

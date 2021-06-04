@@ -44,8 +44,10 @@ module.exports = async (client, message) => {
 					return;
 				}
 				else if (!message.member.hasPermission(permission)) {
-					return message.channel.send(
-						`🛑 Insufficient Permission! \`${permission}\` required.`,
+					return message.channel.send(new MessageEmbed()
+						.setTitle("Permission Error")
+						.setDescription("Sorry, you don't have permissions to use this! ❌")
+						.setFooter(`${permission} required!`)
 					);
 				}
 			}
@@ -57,8 +59,10 @@ module.exports = async (client, message) => {
 
 			for (const permission of command.botperms) {
 				if (!message.guild.me.hasPermission(permission)) {
-					return message.channel.send(
-						`🛑 Insufficient Permission! I require \`${permission}\`.`,
+					return message.channel.send(new MessageEmbed()
+						.setTitle("Permission Error")
+						.setDescription("I don't have permissions to use this! ❌")
+						.setFooter(`${permission} required!`)
 					);
 				}
 			}
