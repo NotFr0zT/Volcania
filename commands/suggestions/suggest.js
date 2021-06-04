@@ -9,7 +9,7 @@ module.exports = {
     description: 'Suggests something!',
     aliases: [],
     usage: 'suggest <string>',
-    example: 'suggest Add Volcania to the server',
+    example: 'suggest Add Mee6 to the server',
     userperms: [],
     botperms: ['MANAGE_CHANNELS'],
     run: async (client, message, args) => {
@@ -22,11 +22,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
 
-            .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-            .setDescription(`${suggestionQuery}`)
-            .setColor("00FFFF")
-            .setFooter(`Status: pending | ID ${message.id}`)
-            .setTimestamp();
+        .setDescription('Processing...')
 
         const done = new MessageEmbed()
             .setDescription(` Your suggestion was successfully sent to <#${channel}>!`)
@@ -34,6 +30,13 @@ module.exports = {
 
         message.lineReplyNoMention(done)
         let msgEmbed = await message.guild.channels.cache.get(channel).send(embed)
+        await msgEmbed.edit(new MessageEmbed()
+            .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+            .setDescription(`${suggestionQuery}`)
+            .setColor("00FFFF")
+            .setFooter(`Status: pending | ID ${msgEmbed.id}`)
+            .setTimestamp()
+        )
 
         await msgEmbed.react('👍')
         await msgEmbed.react('👎')

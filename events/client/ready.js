@@ -16,7 +16,7 @@ module.exports = async (client) => {
 
 	setInterval(function () {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setPresence({activity: {type: 'WATCHING', url: "https://www.twitch.tv/", name: status}, status:  'idle'});
+		client.user.setPresence({ activity: { type: 'WATCHING', url: "https://www.twitch.tv/", name: status }, status: 'dnd' });
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);

@@ -72,7 +72,7 @@ module.exports = {
                 .setDescription(`${data.description}`)
                 .setColor('GREEN')
                 .addField(`Accepted by ${message.author.tag}`, replyQuery)
-                .setFooter(`Status: accepted | ID: ${suggestedEmbed.id}`)
+                .setFooter(`Status: accepted | ID: ${messageID}`)
                 .setTimestamp();
 
             suggestedEmbed.edit(replyEmbed);

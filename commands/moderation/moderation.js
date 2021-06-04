@@ -19,7 +19,6 @@ module.exports = {
         if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(lockPermErr)
 
         if (args[0]) {
-            if (args[0] !== 'on' || 'off') return message.channel.send('Type `v!help moderation` for info on how to use it!')
             if (args[0] === 'on') {
                 if (db.get(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is already enabled in **${message.guild.name}**! Type \`v!moderation off\` to turn it off!`)
                 try {

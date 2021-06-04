@@ -1,5 +1,0 @@
-{
-    "loop_status_types": true,
-    "loop_status": ["COMPETING", "PLAYING", "WATCHING"],
-    "status": "v!help"
-}

@@ -67,7 +67,7 @@ module.exports = {
                 .setDescription(`${data.description}`)
                 .setColor('RED')
                 .addField(`Declined by ${message.author.tag}`, replyQuery)
-                .setFooter(`Status: declined | ID: ${suggestedEmbed.id}`)
+                .setFooter(`Status: declined | ID: ${messageID}`)
                 .setTimestamp();
 
             suggestedEmbed.edit(replyEmbed)

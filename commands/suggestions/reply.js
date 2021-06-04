@@ -14,7 +14,6 @@ module.exports = {
     run: async (client, message, args) => {
         let channel = await db.fetch(`suggestion_${message.guild.id}`);
         if (channel === null) return message.channel.send(`No suggestion channel set. Use\n\n\`\`\`v!setsuggestion <#channel>\`\`\``);
-        if (channel === null) return;
 
         const rgx = /^(?:<@!?)?(\d+)>?$/;
         const messageID = args[0];
@@ -66,7 +65,7 @@ module.exports = {
                 .setDescription(`${data.description}`)
                 .setColor('BLUE')
                 .addField(`Reply from ${message.author.tag}`, replyQuery)
-                .setFooter(`Status: replied | ID: ${suggestedEmbed.id}`)
+                .setFooter(`Status: replied | ID: ${messageID}`)
                 .setTimestamp();
 
             suggestedEmbed.edit(replyEmbed)
