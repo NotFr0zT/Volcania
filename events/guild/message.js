@@ -4,26 +4,8 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = async (client, message) => {
 
-	// const mentionMember = message.mentions.members.first();
-	// if(mentionMember) {
-	// 	const data = afk.get(mentionMember.id);
-	// 	if(data) {
-	// 		const [ timestamp, reason ] = data;
-	// 		const timeAgo = moment(timestamp).fromNow();
-
-	// 		message.channel.send(new MessageEmbed()
-	// 		.addField(`${mentionMember} is currently afk!`, `${timeAgo}\n${reason}`)
-	// 		)
-	// 	}
-	// }
-	// const getData = afk.get(message.author.id);
-	// if(!getData) {
-	// 	afk.delete(message.author.id);
-	// 	message.reply(`Your afk has been removed!`)
-	// }
-
 	if (message.author.bot) return;
-	if (!message.guild) return;
+	if (!message.guild) return message.channel.send(`Bruh, please use me in a guild ;-;`);
 
 	const prefix = PREFIX;
 	let totalMembers = 0;
