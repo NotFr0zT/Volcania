@@ -37,7 +37,7 @@ module.exports = {
         // }
         // return message.channel.send("```" + text + "```");
         message.channel.send(
-            'Temporarily disabled do to a bug.'
+            'Temporarily disabled due to a bug.'
         )
     }
 }

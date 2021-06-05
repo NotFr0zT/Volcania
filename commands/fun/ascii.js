@@ -24,14 +24,10 @@ module.exports = {
 
         let result = await figletAsync(content);
 
-        let embed = new MessageEmbed()
-            .setColor('BLUE')
-            .setDescription('```' + result + '```')
-            .setTimestamp();
 
             if (content.length > 25)
                 return message.channel.send('Please make it shorter, the limit around here is 25')
 
-            message.channel.send(embed)
+            message.channel.send('```' + result + '```')
     }
 }
