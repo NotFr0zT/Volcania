@@ -17,6 +17,9 @@ module.exports = async (client, message) => {
 	if (message.content === 'v!users') return message.channel.send(totalMembers)
 	if (message.content === 'v!servers') return message.channel.send(client.guilds.cache.size)
 	if (message.content === 'v!commands') return message.channel.send(client.commands.size)
+	if (message.content === 'hi' && message.guild.id === '712643946748182608') return message.channel.send('hello')
+	if (message.content === 'hru volcania' && message.guild.id === '712643946748182608') return message.channel.send('im :sparkles: **bad** :sparkles: how are you tho?')
+	if (message.content === 'thats good to hear volcania' && message.guild.id === '712643946748182608') return message.channel.send('am I right!?')
 
 	if (message.content.match(`^<@!?${client.user.id}>( |)$`)) {
 		message.channel.send(`${message.guild.name}'s prefix is \`${prefix}\``);
