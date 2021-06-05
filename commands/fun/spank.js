@@ -1,7 +1,6 @@
 const { MessageEmbed, Client, Message, MessageAttachment } = require('discord.js');
 const { MessageButton } = require('discord-buttons');
 const db = require('quick.db');
-const Canvas = require('canvas')
 
 module.exports = {
     name: 'spank',
