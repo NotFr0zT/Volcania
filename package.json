@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "canvas": "^2.8.0",
     "cpu-stat": "^2.0.1",
     "discord-buttons": "^2.4.1",
     "discord-reply": "^0.1.2",
