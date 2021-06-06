@@ -6,7 +6,7 @@ server.get('/', (req, res) => {
 });
 
 function keepAlive() {
-	server.listen(8080, () => {
+	server.listen(3000, () => {
 		console.log('Server is Ready!');
 	});
 }
