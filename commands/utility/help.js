@@ -26,14 +26,13 @@ module.exports = {
 					`> **Description: \`${capitalizeFirstLetter(cmd.description)}\`**`,
 					`> **Usage: \`${prefix}${cmd.usage}\`**`,
 					`> **Aliases: \`${cmd.aliases.length ? cmd.aliases.map((a) => `${a}`).join('`, `') : 'None'}\`**`,
-					`> **Example: \`${prefix}${cmd.example}\`**`
 				]);
 			return message.channel.send(hembed);
 		}
 		else {
 			const embed = new MessageEmbed()
 				.setTitle(`${client.user.username}'s Commands`)
-				.setFooter(`${client.user.username}'s Help`, `${client.user.avatarURL()}`)
+				.setFooter(`${client.commands.size} Commands!`, `${client.user.avatarURL()}`)
 				.setTimestamp()
 				.setColor('BLUE')
 				.setDescription([`This server's prefix is \`${prefix}\`.\nFor more info on a specific command, type \`${prefix}help <command>\`.`]);
