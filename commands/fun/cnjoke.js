@@ -13,8 +13,8 @@ module.exports = {
 	userperms: [],
 	botperms: [],
 	run: async (client, message, args) => {
-        giveMeAJoke.getRandomCNJoke(function (joke) {
-            message.channel.send(joke)
-        })
+		giveMeAJoke.getRandomCNJoke(function (joke) {
+			message.channel.send(joke)
+		})
 	}
 }

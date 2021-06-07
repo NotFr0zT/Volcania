@@ -1,4 +1,3 @@
-const yoMomma = require('yo-mamma').default;
 const { MessageEmbed, Client, Message } = require('discord.js');
 const { MessageButton } = require('discord-buttons');
 const db = require('quick.db');
@@ -18,6 +17,8 @@ module.exports = {
     * @param {String[]} args
     */
     run: async (client, message, args) => {
-        message.channel.send(yoMomma())
+        let jokes = require('../../jsons/yomomma.json')
+        const type = Math.floor(Math.random() * jokes.length)
+        message.channel.send(jokes[type])
     }
 }

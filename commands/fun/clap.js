@@ -14,7 +14,7 @@ module.exports = {
     botperms: [],
     run: async (client, message, args) => {
         if (args.length < 1) return message.channel.send("Please provide some text to clapify")
-    
+
         message.channel.send(args.join('👏'));
     }
 }
