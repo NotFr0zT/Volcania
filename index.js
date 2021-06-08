@@ -13,6 +13,10 @@ client.aliases = new Collection();
     require(`./handlers/${handler}`)(client);
 });
 
+client.on("error", (e) => console.error(e));
+// client.on("warn", (e) => console.warn(e));
+// client.on("debug", (e) => console.info(e));
+
 
 client.on('guildMemberAdd', async (member, guild) => {
     let chx = db.get(`welchannel_${member.guild.id}`);
