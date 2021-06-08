@@ -15,10 +15,9 @@ client.aliases = new Collection();
 
 
 client.on('guildMemberAdd', async (member, guild) => {
-    let chx = db.get(`welchannel_${guild.id}`);
-    let role = db.get(`welrole_${guild.id}`);
+    let chx = db.get(`welchannel_${member.guild.id}`);
 
-    if (chx === null || role === null) {
+    if (chx === null) {
         return;
     }
 
