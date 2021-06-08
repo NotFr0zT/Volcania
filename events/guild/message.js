@@ -50,7 +50,7 @@ module.exports = async (client, message) => {
 					return message.channel.send(new MessageEmbed()
 						.setTitle("Permission Error")
 						.setDescription("Sorry, you don't have permissions to use this! ❌")
-						.setFooter(`${permission} required!`)
+						.setFooter(`Use v!help ${cmd} to see the required permissions!`)
 					);
 				}
 			}

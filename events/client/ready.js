@@ -9,9 +9,9 @@ module.exports = async (client) => {
 	}
 
 	const botStatus = [
-		`${client.guilds.cache.size} Servers!`,
-		`${totalMembers} Users!`,
-		`${client.commands.size} Commands!`
+		`${client.guilds.cache.size} servers!`,
+		`${totalMembers} users!`,
+		`${client.commands.size} commands!`
 	];
 
 	setInterval(function () {
