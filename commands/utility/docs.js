@@ -22,6 +22,7 @@ module.exports = {
         if (!args.length) {
             return message.channel.send('give me sth to work with')
         }
+
         axios
             .get(uri)
             .then((embed) => {
