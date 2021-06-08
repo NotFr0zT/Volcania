@@ -28,7 +28,6 @@
 
 ---
 
-<<<<<<< HEAD
 ## Releases and Versions
 
 - **Get Information relating different versions of this repository:**
@@ -42,10 +41,9 @@
 ## Contributing
 
 - **Feel free to open pull requests to contribute to the repository!**
-- **Join our [Support Server](https://infinitybot.tk/support)**
-- **Invite Volcania to your Server, [Here](https://infinitybot.tk/invite)**
+- **Join our [Support Server](https://discord.gg/tVQckYkbK4)**
+- **Invite Volcania to your Server, [Here](https://discord.com/oauth2/authorize?client_id=843428824385716244&permissions=8&scope=bot)**
 
 ---
-=======
+
 More coming to the README, stay updated!
->>>>>>> 2e8c1baa276a387ce47f51283c531d1b6e76ad1d
