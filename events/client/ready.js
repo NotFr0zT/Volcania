@@ -9,14 +9,12 @@ module.exports = async (client) => {
 	}
 
 	const botStatus = [
-		`${client.guilds.cache.size} Servers!`,
-		`${totalMembers} Users!`,
-		`${client.commands.size} Commands!`
+		`in ${client.guilds.cache.size} servers`,
 	];
 
 	setInterval(function () {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setPresence({ activity: { type: 'WATCHING', url: "https://www.twitch.tv/fr0zttt", name: status } });
+		client.user.setPresence({ activity: { type: 'PLAYING', url: "https://www.twitch.tv/fr0zttt", name: status } });
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);
