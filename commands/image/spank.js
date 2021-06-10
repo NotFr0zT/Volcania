@@ -5,7 +5,7 @@ const db = require('quick.db');
 
 module.exports = {
     name: 'spank',
-    category: 'Fun',
+    category: 'Image',
     description: 'Spank\'s a user',
     aliases: [],
     usage: 'spank <user>',
