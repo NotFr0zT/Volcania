@@ -19,6 +19,7 @@ module.exports = {
 
         if (args[0] === 'off') {
             db.delete(`welchannel_${message.guild.id}`)
+            message.channel.send('Set it to off!')
         }
 
         if (!channel) {

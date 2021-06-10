@@ -21,7 +21,7 @@ client.on("error", (e) => console.error(e));
 client.on('guildMemberAdd', async (member, guild) => {
     let chx = db.get(`welchannel_${member.guild.id}`);
 
-    if (chx === null) {
+    if (chx === null || undefined) {
         return;
     }
 
