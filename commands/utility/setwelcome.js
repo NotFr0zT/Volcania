@@ -17,6 +17,10 @@ module.exports = {
     run: async (client, message, args) => {
         let channel = message.mentions.channels.first()
 
+        if (args[0] === 'off') {
+            db.delete(`welchannel_${message.guild.id}`)
+        }
+
         if (!channel) {
             return message.channel.send("Please Mention the channel first")
         }
