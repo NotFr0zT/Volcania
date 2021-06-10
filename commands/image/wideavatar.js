@@ -16,8 +16,8 @@ module.exports = {
     */
     run: async (client, message, args) => {
         const mention = message.mentions.members.first() || message.member;
-        const avatar = mention.user.displayAvatarURL({ dynamic: true, size: 2048, format: "gif" });
+        const avatar = mention.user.displayAvatarURL({ dynamic: true, size: 2048, format: "png" });
 
-        await message.channel.send({ files: [{ attachment: `https://vacefron.nl/api/wide?image=${avatar}`, name: "wideavatar.gif" }] });
+        await message.channel.send({ files: [{ attachment: `https://vacefron.nl/api/wide?image=${avatar}`, name: "wideavatar.png" }] });
     }
 }

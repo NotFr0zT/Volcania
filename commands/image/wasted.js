@@ -18,6 +18,6 @@ module.exports = {
         const user = message.mentions.members.first() || message.member;
         const avatar = user.user.displayAvatarURL({ size: 2048, format: "png" });
 
-        await message.channel.send({ files: [{ attachment: `https://some-random-api.ml/canvas/wasted?avatar=${avatar}`, name: 'file.jpg' }] })
+        await message.channel.send({ files: [{ attachment: `https://some-random-api.ml/canvas/wasted?avatar=${avatar}`, name: 'file.png' }] })
     }
 }
