@@ -1,10 +1,11 @@
 require('dotenv').config();
 const keepAlive = require('./server');
-const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed, Discord, MessageAttachment } = require('discord.js');
 require('discord-reply');
 const db = require('quick.db');
 const client = new Client({ disableMentions: 'everyone', partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER'], ws: { intents: Intents.ALL } });
 require('discord-buttons')(client);
+// const Canvas = require('canvas')
 
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -12,28 +13,6 @@ client.aliases = new Collection();
 ['command', 'event'].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
-
-client.on("error", (e) => console.error(e));
-// client.on("warn", (e) => console.warn(e));
-// client.on("debug", (e) => console.info(e));
-
-
-client.on('guildMemberAdd', async (member, guild) => {
-    let chx = db.get(`welchannel_${member.guild.id}`);
-
-    if (chx === null || undefined) {
-        return;
-    }
-
-
-    let wembed = new MessageEmbed()
-        .setAuthor(member.user.username, member.user.displayAvatarURL())
-        .setColor("#ff2050")
-        .setThumbnail(member.user.displayAvatarURL())
-        .setDescription(`We are very happy to have you in our server`);
-
-    client.channels.cache.get(chx).send(wembed)
-})
 
 client.on('guildCreate', async (guild) => {
     let defaultChannel = 'general';
@@ -58,6 +37,7 @@ client.on('guildCreate', async (guild) => {
 
 
 })
+
 
 
 keepAlive();

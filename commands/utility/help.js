@@ -26,6 +26,8 @@ module.exports = {
 					`> **Description: \`${capitalizeFirstLetter(cmd.description)}\`**`,
 					`> **Usage: \`${prefix}${cmd.usage}\`**`,
 					`> **Aliases: \`${cmd.aliases.length ? cmd.aliases.map((a) => `${a}`).join('`, `') : 'None'}\`**`,
+					`> **Permissions: \`${cmd.userperms.length ? cmd.userperms.map((f) => `${f}`).join('`, `') : 'None'}\`**`,
+					`> **Bot Permissions: \`${cmd.botperms.length ? cmd.botperms.map((f) => `${f}`).join('`, `') : 'None'}\`**`,
 				]);
 			return message.channel.send(hembed);
 		}
@@ -38,10 +40,10 @@ module.exports = {
 				.setDescription([`This server's prefix is \`${prefix}\`.\nFor more info on a specific command, type \`${prefix}help <command>\`.`]);
 
 			let categories;
-			if(message.author.id !== OWNER) {
+			if (message.author.id !== OWNER) {
 				categories = [...new Set(client.commands.filter(cmd => cmd.category !== 'Owner').map(cmd => cmd.category))];
 			}
-			else{
+			else {
 				categories = [...new Set(client.commands.map(cmd => cmd.category))];
 			}
 

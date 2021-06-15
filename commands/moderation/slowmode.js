@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, Client, Message } = require('discord.js')
 const { MessageButton } = require('discord-buttons')
 const db = require('quick.db')
 const ms = require('ms')
@@ -12,6 +12,12 @@ module.exports = {
     example: 'slowmode 20s Too much spam',
     userperms: [],
     botperms: [],
+    /**
+     * 
+     * @param {CLient} client 
+     * @param {Message} message 
+     * @param {String[]} args 
+     */
     run: async (client, message, args) => {
         if (!db.fetch(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is not enabled in **${message.guild.name}**! \`Type v!moderation on\` to turn it on!`)
 
