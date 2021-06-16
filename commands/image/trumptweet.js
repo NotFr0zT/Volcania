@@ -17,7 +17,6 @@ module.exports = {
     */
     run: async (client, message, args) => {
 
-        if (message.guild.id === '712643946748182608') return;
         const tweet = args.join(" ");
         if (!tweet) {
             return message.channel.send("Mr. President Says: \`What to tweet ?\`")
