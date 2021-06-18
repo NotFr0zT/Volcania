@@ -3,10 +3,15 @@ const { MessageEmbed } = require('discord.js');
 const client = require('discord.js')
 const moment = require('moment');
 module.exports = {
-    name: 'userinfo',
-    description: 'Find out info about mentioned user',
-    aliases: ['userinfo', 'user', 'whois', 'info'],
-    run: async(client, message, args) => {
+	name: 'userinfo',
+	aliases: ['whois', 'info', 'user'],
+	category: 'Utility',
+	description: 'Sends information about mentioned user / user',
+	usage: 'userinfo',
+	example: 'userinfo',
+	userperms: [],
+	botperms: [],
+	run: async (client, message, args, prefix) => {
       const badge1 = client.emojis.cache.find(emoji => emoji.name === "badge1");
       const badge2 = client.emojis.cache.find(emoji => emoji.name === "badge2");
       const badge3 = client.emojis.cache.find(emoji => emoji.name === "badge3");
@@ -16,9 +21,9 @@ module.exports = {
         BUGHUNTER_LEVEL_1: 'Bug Hunter (Level 1)',
         BUGHUNTER_LEVEL_2: 'Bug Hunter (Level 2)',
         HYPESQUAD_EVENTS: 'HypeSquad Events',
-        HOUSE_BRAVERY: `${badge2}`,//ADD HYPESQUAD BRAVERY BADGE EMOJI TO SUPPORT SERVER AND NAME IT badge2 FOR IT TO WORK
-        HOUSE_BRILLIANCE: `${badge1}`,//ADD HYPESQUAD BRILLIANCE BADGE EMOJI TO SUPPORT SERVER AND NAME IT badge1 FOR IT TO WORK
-        HOUSE_BALANCE: `${badge3}`,//ADD HYPESQUAD BALANCE BADGE EMOJI TO SUPPORT SERVER AND NAME IT badge3 FOR IT TO WORK
+        HOUSE_BRAVERY: `${badge2}`,
+        HOUSE_BRILLIANCE: `${badge1}`,
+        HOUSE_BALANCE: `${badge3}`,
         EARLY_SUPPORTER: 'Early Supporter',
         TEAM_USER: 'Team User',
         SYSTEM: 'System',
