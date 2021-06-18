@@ -15,6 +15,7 @@ require('discord-buttons')(client);
 
 client.commands = new Collection();
 client.aliases = new Collection();
+client.snipes = new Map();
 
 ['command'].forEach(handler => {
     require(`./handlers/${handler}`)(client);

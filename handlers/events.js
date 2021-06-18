@@ -7,7 +7,7 @@ const db = require('quick.db')
 /**
  * 
  * @param {Client} client 
- * @param {Message} client
+ * @param {Message} message
  * @param {GuildMember} member
  */
 
@@ -190,6 +190,34 @@ module.exports = async (client) => {
 
         client.channels.cache.get(chx).send(`<@${member.id}>`, wembed)
     })
+
+    // client.on('messageDelete', async (message, client) => {
+    //     if (message.author.bot) return;
+
+    //     client.snipes.set(message.channel.id, {
+    //         content: message.content,
+    //         author: message.author
+    //     });
+
+    //     try {
+    //         let modLogsID = await db.fetch(`modlog_${message.guild.id}`);
+
+    //         if (!modLogsID) return;
+
+    //         const logsEmbed = new MessageEmbed()
+    //             .setColor(0xdb0f1d)
+    //             .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+    //             .setDescription(`**Message sent by <@${message.author.id}> deleted in <#${message.channel.id}> \n\`${message.content}\`**`)
+    //             .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`)
+    //             .setTimestamp()
+
+    //         await message.guild.channels.cache.get(modLogsID).send(logsEmbed);
+
+    //     } catch (error) {
+    //         //console.log(error)
+    //     }
+
+    // })
 
 }
 console.log('Loaded all events...')

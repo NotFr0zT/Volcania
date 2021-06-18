@@ -1,5 +1,6 @@
 const { MessageEmbed, Client, Message } = require('discord.js');
 const db = require('quick.db');
+const moment = require('moment')
 
 module.exports = {
     name: 'serverinfo',
@@ -25,6 +26,7 @@ module.exports = {
 
         let inline = true
         let sicon = message.guild.iconURL;
+        const member = message.member
         let serverembed = new MessageEmbed()
             .setColor("#00ff00")
             .setThumbnail(sicon)
@@ -37,8 +39,8 @@ module.exports = {
             .addField("Members", `🧑‍🦲 ${message.guild.memberCount}`, inline)
             .addField("Roles", message.guild.roles.cache.size, inline)
             .addField("Channels", message.guild.roles.cache.size, inline)
-            .addField("You Joined", message.member.joinedAt)
-            .setFooter(`Created ${message.guild.createdAt}`);
+            .addField("You Joined", `${moment(member.joinedTimestamp).format('LT')} ${moment(member.joinedTimestamp).format('LL')} ${moment(member.joinedTimestamp).fromNow()}`)
+            .setFooter(`Created ${moment(message.guild.createdTimestamp).format('MMMM Do YYYY, h:mm:ss')} | ${Math.floor((Date.now() - message.guild.createdTimestamp) / 86400000)} day(s) ago**`);
 
         message.channel.send(serverembed);
     }

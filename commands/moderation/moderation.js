@@ -22,10 +22,10 @@ module.exports = {
                 } catch {
                     message.channel.send('Failed to enable, please contact a developer in our [Support Server](https://discord.gg/xyqpAvyPgZ)')
                 }
-            } else if (args[0] === 'off')  {
+            } else if (args[0] === 'off') {
                 if (!db.get(`moderation_${message.guild.id}`) === true) return message.channel.send(`Moderation is already off in **${message.guild.name}**! Type \`v!moderation on\` to turn it on!`)
                 try {
-                    db.set(`moderation_${message.guild.id}`, false)
+                    db.delete(`moderation_${message.guild.id}`)
                     message.channel.send(`Successfully set Moderation to **False** in \`${message.guild.name}\``)
                 } catch {
                     message.channel.send('Failed to disable, please contact a developer in our [Support Server](https://discord.gg/xyqpAvyPgZ)')
