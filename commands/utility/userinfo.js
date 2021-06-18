@@ -1,83 +1,83 @@
-const Discord = require("discord.js")  
+const Discord = require("discord.js")
 const { MessageEmbed } = require('discord.js');
 const client = require('discord.js')
 const moment = require('moment');
 module.exports = {
-	name: 'userinfo',
-	aliases: ['whois', 'info', 'user'],
-	category: 'Utility',
-	description: 'Sends information about mentioned user / user',
-	usage: 'userinfo',
-	example: 'userinfo',
-	userperms: [],
-	botperms: [],
-	run: async (client, message, args, prefix) => {
-      const badge1 = client.emojis.cache.find(emoji => emoji.name === "badge1");
-      const badge2 = client.emojis.cache.find(emoji => emoji.name === "badge2");
-      const badge3 = client.emojis.cache.find(emoji => emoji.name === "badge3");
-      const flags = {
-        DISCORD_EMPLOYEE: 'Discord Employee',
-        DISCORD_PARTNER: 'Discord Partner',
-        BUGHUNTER_LEVEL_1: 'Bug Hunter (Level 1)',
-        BUGHUNTER_LEVEL_2: 'Bug Hunter (Level 2)',
-        HYPESQUAD_EVENTS: 'HypeSquad Events',
-        HOUSE_BRAVERY: `${badge2}`,
-        HOUSE_BRILLIANCE: `${badge1}`,
-        HOUSE_BALANCE: `${badge3}`,
-        EARLY_SUPPORTER: 'Early Supporter',
-        TEAM_USER: 'Team User',
-        SYSTEM: 'System',
-        VERIFIED_BOT: 'Verified Bot',
-        VERIFIED_DEVELOPER: 'Verified Bot Developer'
+    name: 'userinfo',
+    aliases: ['whois', 'info', 'user'],
+    category: 'Utility',
+    description: 'Sends information about mentioned user / user',
+    usage: 'userinfo',
+    example: 'userinfo',
+    userperms: [],
+    botperms: [],
+    run: async (client, message, args, prefix) => {
+        const badge1 = client.emojis.cache.find(emoji => emoji.name === "badge1");
+        const badge2 = client.emojis.cache.find(emoji => emoji.name === "badge2");
+        const badge3 = client.emojis.cache.find(emoji => emoji.name === "badge3");
+        const flags = {
+            DISCORD_EMPLOYEE: 'Discord Employee',
+            DISCORD_PARTNER: 'Discord Partner',
+            BUGHUNTER_LEVEL_1: 'Bug Hunter (Level 1)',
+            BUGHUNTER_LEVEL_2: 'Bug Hunter (Level 2)',
+            HYPESQUAD_EVENTS: 'HypeSquad Events',
+            HOUSE_BRAVERY: `${badge2}`,
+            HOUSE_BRILLIANCE: `${badge1}`,
+            HOUSE_BALANCE: `${badge3}`,
+            EARLY_SUPPORTER: 'Early Supporter',
+            TEAM_USER: 'Team User',
+            SYSTEM: 'System',
+            VERIFIED_BOT: 'Verified Bot',
+            VERIFIED_DEVELOPER: 'Verified Bot Developer'
         };
-      var permissions = [];
+        var permissions = [];
         var acknowledgements = 'None';
-        const member = message.mentions.members.first() ||message.mentions.members.last() || message.member;
-        if(member.hasPermission("KICK_MEMBERS")){
+        const member = message.mentions.members.first() || message.mentions.members.last() || message.member;
+        if (member.hasPermission("KICK_MEMBERS")) {
             permissions.push("Kick Members");
         }
-        
-        if(member.hasPermission("BAN_MEMBERS")){
+
+        if (member.hasPermission("BAN_MEMBERS")) {
             permissions.push("Ban Members");
         }
-        
-        if(member.hasPermission("ADMINISTRATOR")){
+
+        if (member.hasPermission("ADMINISTRATOR")) {
             permissions.push("Administrator");
         }
-    
-        if(member.hasPermission("MANAGE_MESSAGES")){
+
+        if (member.hasPermission("MANAGE_MESSAGES")) {
             permissions.push("Manage Messages");
         }
-        
-        if(member.hasPermission("MANAGE_CHANNELS")){
+
+        if (member.hasPermission("MANAGE_CHANNELS")) {
             permissions.push("Manage Channels");
         }
-        
-        if(member.hasPermission("MENTION_EVERYONE")){
+
+        if (member.hasPermission("MENTION_EVERYONE")) {
             permissions.push("Mention Everyone");
         }
-    
-        if(member.hasPermission("MANAGE_NICKNAMES")){
+
+        if (member.hasPermission("MANAGE_NICKNAMES")) {
             permissions.push("Manage Nicknames");
         }
-    
-        if(member.hasPermission("MANAGE_ROLES")){
+
+        if (member.hasPermission("MANAGE_ROLES")) {
             permissions.push("Manage Roles");
         }
-    
-        if(member.hasPermission("MANAGE_WEBHOOKS")){
+
+        if (member.hasPermission("MANAGE_WEBHOOKS")) {
             permissions.push("Manage Webhooks");
         }
-    
-        if(member.hasPermission("MANAGE_EMOJIS")){
+
+        if (member.hasPermission("MANAGE_EMOJIS")) {
             permissions.push("Manage Emojis");
         }
-    
-        if(permissions.length == 0){
+
+        if (permissions.length == 0) {
             permissions.push("No Permissions Found");
         }
-    
-        if(member.user.id == message.guild.ownerID){
+
+        if (member.user.id == message.guild.ownerID) {
             acknowledgements = 'Owner';
         }
         const roles = member.roles.cache
@@ -86,10 +86,10 @@ module.exports = {
             .slice(0, -1);
         const userFlags = member.user.flags.toArray();
         const embed = new MessageEmbed()
-            .setDescription(`__User Information for__ <@${member.id}>`)
+            .setDescription(`User Information for <@${member.id}>`)
             .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setColor(member.displayHexColor || 'BLACK')
-            .addField('__User Info__', [
+            .addField('User Info', [
                 `**Username** : ${member.user.username}`,
                 `**Discriminator** : #${member.user.discriminator}`,
                 `**ID** : ${member.id}`,
