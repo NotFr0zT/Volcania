@@ -1,5 +1,4 @@
 require('dotenv').config();
-const keepAlive = require('./server');
 const { Client, Collection } = require('discord.js');
 require('discord-reply');
 const client = new Client({
@@ -23,7 +22,4 @@ client.snipes = new Map();
 
 const setups = require('./handlers/events');
 setups(client);
-
-keepAlive();
-
 client.login(process.env.TOKEN);
