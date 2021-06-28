@@ -11,6 +11,7 @@ module.exports = {
         const discord = require('discord.js')
         const fetch = require("node-fetch");
         const atob = require('atob')
+        const db = require('quick.db')
         class Game {
             constructor(message, args) {
                 this.message = message
@@ -151,8 +152,14 @@ module.exports = {
                                 .setDescription(this.answer_array)
                                 .setFooter('Category - ' + atob(this.question.results[0].category) + ', Difficulty - ' + atob(this.question.results[0].difficulty))
                             this.question_message.edit(this.question_embed)
+
+                            this.question_message.edit('You got it correct and you got 1 point. :smile:')
+                            this.end_game()
+                            db.add(`points_${member.id}`, 1)
+
                             this.question_message.edit('Correct!!! Great Job')
                             this.end_game()
+
                         }
                         else {
                             this.answer_array[this.input_answer - 1] = this.answer_array[this.input_answer - 1] + ' ❌'
@@ -162,12 +169,23 @@ module.exports = {
                                 .setDescription(this.answer_array)
                                 .setFooter('Category - ' + atob(this.question.results[0].category) + ', Difficulty - ' + atob(this.question.results[0].difficulty))
                             this.question_message.edit(this.question_embed)
+
+                            this.question_message.edit('You got it wrong and you lost 1 point. The correct answer was ' + this.reactions[this.correct_answer - 1])
+                            this.end_game()
+                            db.subtract(`points_${member.id}`, 1)
+                        }
+                    }).catch(() => {
+                        this.question_message.edit('You took to long to answer and you lost 1 point. Game has timed out. The answer was ' +  this.reactions[this.correct_answer - 1])
+                        this.end_game()
+                        db.subtract(`points_${member.id}`, 1)
+
                             this.question_message.edit('Your answer is wrong. The correct answer was ' + this.reactions[this.correct_answer - 1])
                             this.end_game()
                         }
                     }).catch(() => {
                         this.question_message.edit('User took too long to respond... The correct answer was' + this.reactions[this.correct_answer - 1])
                         this.end_game()
+
                     })
             }
             async end_game() {
