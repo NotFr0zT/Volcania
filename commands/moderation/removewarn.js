@@ -12,12 +12,6 @@ module.exports = {
     userperms: ["KICK_MEMBERS", "BAN_MEMBERS"],
     botperms: [],
     run: async (client, message, args) => {
-        if (!message.member.hasPermission("KICK_MEMBERS", "BAN_MEMBERS")) {
-            const warnError = new MessageEmbed()
-                .setDescription("You Do Not have Permission to Warn someone")
-                .setColor("RANDOM");
-            return message.reply(warnError);
-        };
         const user = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.username.toLowerCase() === args.join(" ").toLowerCase()) || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(member => member.displayName.toLowerCase() === args.join(" ").toLowerCase())
         if (!user) return message.reply('Please mention the user')
         const embed = new MessageEmbed()

@@ -14,6 +14,7 @@ module.exports = {
     run: async (client, message, args) => {
         if (!message.member.hasPermission("KICK_MEMBERS", "BAN_MEMBERS")) {
             const warnError = new MessageEmbed()
+
                 .setDescription("You Do Not have Permission to Warn someone")
                 .setColor("RANDOM");
             return message.reply(warnError);
@@ -27,6 +28,7 @@ module.exports = {
             .setTimestamp()
             .setColor('RANDOM')
             .setDescription(`Reason: **${reason}** | By <@${message.author.id}>`)
+
         message.reply(embed)
         user.user.send(`You were warned in ${message.guild.name} | Reason: **${reason}** | By <@${message.author.id}>`)
         db.add(`warns_${message.guild.id}_${user.id}`, 1)
