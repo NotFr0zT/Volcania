@@ -175,13 +175,12 @@ module.exports = {
                             db.subtract(`points_${member.id}`, 1)
                         }
                     }).catch(() => {
-                        this.question_message.edit('You took to long to answer and you lost 1 point. Game has timed out. The answer was ' +  this.reactions[this.correct_answer - 1])
+                        this.question_message.edit('You took to long to answer and you lost 1 point. Game has timed out. The answer was ' + this.reactions[this.correct_answer - 1])
                         this.end_game()
                         db.subtract(`points_${member.id}`, 1)
 
-                            this.question_message.edit('Your answer is wrong. The correct answer was ' + this.reactions[this.correct_answer - 1])
-                            this.end_game()
-                        }
+                        this.question_message.edit('Your answer is wrong. The correct answer was ' + this.reactions[this.correct_answer - 1])
+                        this.end_game()
                     }).catch(() => {
                         this.question_message.edit('User took too long to respond... The correct answer was' + this.reactions[this.correct_answer - 1])
                         this.end_game()
