@@ -4,7 +4,7 @@ const neko = new client()
 
 module.exports = {
     name: 'cuddle',
-    category: 'Emotions',
+    category: 'Fun',
     description: 'Cuddle with someone',
     aliases: [],
     usage: 'cuddle [user]',

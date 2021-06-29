@@ -49,17 +49,12 @@ module.exports = async (client) => {
 
     client.on('ready', async () => {
 
-        let totalMembers = 0;
-
-        for (const guild of client.guilds.cache) {
-            totalMembers += (await guild[1].members.fetch()).size;
-        }
-
-        const botStatus = [
-            `in ${client.guilds.cache.size} servers`,
-        ];
-
         setInterval(function () {
+
+
+            const botStatus = [
+                `${client.guilds.cache.size} servers and ${client.users.cache.size} users`,
+            ];
             const status = botStatus[Math.floor(Math.random() * botStatus.length)];
             client.user.setPresence({ activity: { type: 'PLAYING', url: "https://www.twitch.tv/fr0zttt", name: status } });
         }, 30000);

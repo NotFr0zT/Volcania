@@ -11,18 +11,17 @@ module.exports = {
 	botperms: [],
 	run: async (client, message, args) => {
 		message.channel.send(new MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('Pinging...')
-        ).then((msg) => {
+			.setColor('BLUE')
+			.setTitle('Pinging...')
+		).then((msg) => {
 			const pEmbed = new MessageEmbed()
 				.setTitle('🏓 Pong!')
-				.setColor('BLUE')
-				.setDescription(
-					`Latency: ${Math.floor(
-						msg.createdTimestamp - message.createdTimestamp,
-					)}ms\nAPI Latency: ${client.ws.ping}ms`,
-				);
+				.setColor(msg.createdTimestamp - message.createdTimestamp < 350 ? "GREEN" : msg.createdTimestamp - message.createdTimestamp < 500 && msg.createdTimestamp - message.createdTimestamp > 350 ? "YELLOW" : "RED")
+				.setDescription([
+					`📨 • **Latency: \`${Math.floor(msg.createdTimestamp - message.createdTimestamp,)}\`ms**`,
+					`🛰️ • **API Latency: \`${client.ws.ping}\`ms**`
+				])
 			msg.edit(pEmbed);
 		});
-	},
+	}
 };
