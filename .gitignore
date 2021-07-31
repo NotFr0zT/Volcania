@@ -11,6 +11,7 @@
 hs_err_pid*
 pages/
 node_modules/
-*.json
+package.json
+package-lock.json
 jsons/
-*.sqlite
+json.sqlite
